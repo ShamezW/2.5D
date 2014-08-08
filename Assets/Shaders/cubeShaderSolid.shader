@@ -1,17 +1,14 @@
-﻿Shader "Custom/BlockShader" {
+﻿Shader "Custom/BlockShaderSolid" {
     Properties {
         _MainTex("MainTex", 2D) = "grey" {}
+        _Color("Color", Color) = (1, 1, 1, 1)
     }
     SubShader {
         Tags {"Queue"="Transparent" "RenderType" = "Transparent" "IgnoreProjector"="True" "Bent"="Bent"}
         LOD 200
  
         Pass {
-            ZWrite Off
-            Cull Off
-            ColorMask RGB
             Lighting Off
-            Blend DstColor Zero
         Tags { "LightMode" = "ForwardBase" }
             CGPROGRAM
                 #pragma vertex vert
@@ -26,6 +23,7 @@
                 
                 sampler2D _MainTex;
                 float4 _MainTex_ST;
+                float4 _Color;
 
                 v2f vert(appdata_full v)
                 {
@@ -37,7 +35,7 @@
            
                 float4 frag(v2f IN) : COLOR
                 {
-                    return tex2D(_MainTex, IN.uv_MainTex);
+                    return tex2D(_MainTex, IN.uv_MainTex) * _Color;
                 }
             ENDCG
         }

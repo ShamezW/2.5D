@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: cubeMaterial
-  m_Shader: {fileID: 4800000, guid: 9a1cdd84618d24b45a6b5e8f3db8df28, type: 3}
+  m_Name: BlueCubes
+  m_Shader: {fileID: 4800000, guid: c8aae803132f78c45ad9fe12bf6d2aba, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
@@ -25,8 +25,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
-      data:
-        first:
-          name: _AddColor
-        second: {r: .0220588446, g: .0220588446, b: .0220588446, a: 1}
+        second: {r: 0, g: .717647076, b: 1, a: 1}
