@@ -1,6 +1,7 @@
 ﻿Shader "Custom/BlockShader" {
     Properties {
         _MainTex("MainTex", 2D) = "grey" {}
+        _Intensity("Intensity", Float) = 1
     }
     SubShader {
         Tags {"Queue"="Transparent" "RenderType" = "Transparent" "IgnoreProjector"="True" "Bent"="Bent"}
@@ -26,6 +27,7 @@
                 
                 sampler2D _MainTex;
                 float4 _MainTex_ST;
+                float _Intensity;
 
                 v2f vert(appdata_full v)
                 {
@@ -37,7 +39,8 @@
            
                 float4 frag(v2f IN) : COLOR
                 {
-                    return tex2D(_MainTex, IN.uv_MainTex);
+                    half4 tex = pow(tex2D(_MainTex, IN.uv_MainTex), _Intensity);
+                    return tex;
                 }
             ENDCG
         }
