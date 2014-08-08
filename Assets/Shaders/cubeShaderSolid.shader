@@ -4,7 +4,7 @@
         _Color("Color", Color) = (1, 1, 1, 1)
     }
     SubShader {
-        Tags {"Queue"="Transparent" "RenderType" = "Transparent" "IgnoreProjector"="True" "Bent"="Bent"}
+        Tags { "Queue" = "Geometry" }
         LOD 200
  
         Pass {

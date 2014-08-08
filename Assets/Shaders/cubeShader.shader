@@ -4,7 +4,7 @@
         _Intensity("Intensity", Float) = 1
     }
     SubShader {
-        Tags {"Queue"="Transparent" "RenderType" = "Transparent" "IgnoreProjector"="True" "Bent"="Bent"}
+        Tags {"Queue"="Overlay" "RenderType" = "Overlay" }
         LOD 200
  
         Pass {
