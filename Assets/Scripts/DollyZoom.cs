@@ -1,11 +1,10 @@
 using UnityEngine;
 using System.Collections;
 
-public class DollyZoom : MonoBehaviour {
+public class DollyZoom : MonoBehaviour
+{
     public Transform target;
-
-    private float initHeightAtDist;
-    private bool dzEnabled;
+    float initHeightAtDist;
 
     float FrustumHeightAtDistance(float distance)
     {
@@ -16,30 +15,23 @@ public class DollyZoom : MonoBehaviour {
     {
         return 2f * Mathf.Atan(height * 0.5f / distance) * Mathf.Rad2Deg;
     }
-
-    void StartDZ()
+    // new func
+    float DistanceForHeightAndFov(float height, float fov)
     {
-        float distance = Vector3.Distance(transform.position, target.position);
-        initHeightAtDist = FrustumHeightAtDistance(distance);
-        dzEnabled = true;
-    }
-
-    void stopDZ()
-    {
-        dzEnabled = false;
+        return height * 0.5f / Mathf.Tan(fov * 0.5f * Mathf.Deg2Rad);
     }
 
     void Start()
     {
-        StartDZ();
+        float distance = Vector3.Distance(transform.position, target.position);
+        initHeightAtDist = FrustumHeightAtDistance(distance);
     }
 
     void Update()
     {
-        if (dzEnabled)
-        {
-            float curDistance = Vector3.Distance(transform.position, target.position);
-            gameObject.camera.fieldOfView = FovForHeightAndDistance(initHeightAtDist, curDistance);
-        }
+        float curDistance = Vector3.Distance(transform.position, target.position);
+        float needDistance = DistanceForHeightAndFov(initHeightAtDist, gameObject.camera.fieldOfView);
+        float diff = curDistance - needDistance;
+        transform.Translate(0, 0, diff);
     }
 }
