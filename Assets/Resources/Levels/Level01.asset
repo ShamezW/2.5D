@@ -9,8 +9,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4fbc3a43f455984d9432219f31256be, type: 3}
-  m_Name: 01Level
+  m_Name: Level01
   m_EditorClassIdentifier: 
-  SmallBlocks: []
-  PlayerBlock: []
-  BlockerBlock: []
+  PlayerBlockLoc: {x: 0, y: 0, z: 0}
+  myLevel:
+  - blockType: 0
+    Location: {x: 1, y: 3, z: 3}
+    Prefab: {fileID: 0}
+  - blockType: 0
+    Location: {x: 2, y: 3, z: 3}
+    Prefab: {fileID: 0}
+  - blockType: 0
+    Location: {x: 3, y: 3, z: 3}
+    Prefab: {fileID: 0}

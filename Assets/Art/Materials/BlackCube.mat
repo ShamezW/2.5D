@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: BlueCubes
+  m_Name: BlackCube
   m_Shader: {fileID: 4800000, guid: c8aae803132f78c45ad9fe12bf6d2aba, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
@@ -25,4 +25,4 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 0, g: .65882355, b: 1, a: 1}
+        second: {r: .301470578, g: .301470578, b: .301470578, a: 1}
