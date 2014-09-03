@@ -41,9 +41,11 @@ public class LevelDataEditor : Editor
         list.DoLayoutList();
         serializedObject.ApplyModifiedProperties();
 
-        if (GUILayout.Button("test"))
+        if (GUILayout.Button("Build Level"))
         {
             data.CreateLevel();
         }
+
+        EditorUtility.SetDirty(data);
     }
 }

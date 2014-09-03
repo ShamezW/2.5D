@@ -24,4 +24,9 @@ public class GameManager : Singleton<GameManager> {
             Instance.orthoToggle = false;
         }
     }
+
+    public void PauseGame()
+    {
+        Debug.Log("Paused");
+    }
 }
