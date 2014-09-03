@@ -12,23 +12,30 @@ public class LevelData : ScriptableObject {
 
     public void CreateLevel()
     {
+        GameObject block;
+        Transform parent = GameObject.Find("BaseCube").transform;
+
         // Create Player Cube
-        GameObject.Instantiate(PlayerBlock, GetCoords(PlayerBlockLoc), Quaternion.identity);
+        GameObject playerCube = (GameObject)GameObject.Instantiate(PlayerBlock, GetCoords(PlayerBlockLoc), Quaternion.identity);
+        playerCube.transform.parent = parent;
 
         // Loop other blocks and spawn
         foreach (Level i in myLevel)
         {
             if (i.blockType == Level.BlockType.Basic)
             {
-                GameObject.Instantiate(BasicBlock, GetCoords(i.Location), Quaternion.identity);
+                block = (GameObject)GameObject.Instantiate(BasicBlock, GetCoords(i.Location), Quaternion.identity);
+                block.transform.parent = parent;
             }
             else if (i.blockType == Level.BlockType.Jumper)
             {
-                GameObject.Instantiate(JumperBlock, GetCoords(i.Location), Quaternion.identity);
+                block = (GameObject)GameObject.Instantiate(JumperBlock, GetCoords(i.Location), Quaternion.identity);
+                block.transform.parent = parent;
             }
             else if (i.blockType == Level.BlockType.Blocker)
             {
-                GameObject.Instantiate(BlockerBlock, GetCoords(i.Location), Quaternion.identity);
+                block = (GameObject)GameObject.Instantiate(BlockerBlock, GetCoords(i.Location), Quaternion.identity);
+                block.transform.parent = parent;
             }
         }
     }
