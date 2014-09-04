@@ -14,10 +14,10 @@ MonoBehaviour:
   PlayerBlockLoc: {x: 0, y: 3, z: 0}
   myLevel:
   - blockType: 0
-    Location: {x: 1, y: 3, z: 3}
+    Location: {x: 1, y: 3, z: 1}
     Prefab: {fileID: 0}
   - blockType: 0
-    Location: {x: 2, y: 3, z: 3}
+    Location: {x: 2, y: 3, z: 2}
     Prefab: {fileID: 0}
   - blockType: 0
     Location: {x: 3, y: 3, z: 3}

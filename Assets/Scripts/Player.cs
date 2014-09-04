@@ -15,22 +15,22 @@ public class Player : MonoBehaviour {
         if (GestureManager.State == GestureState.SwipeLeft)
         {
             if (RayHit(GestureManager.orgLoc))
-                transform.Translate(Vector3.left, Space.World);
+                Move(Vector3.left);
         }
         else if (GestureManager.State == GestureState.SwipeRight)
         {
             if (RayHit(GestureManager.orgLoc))
-                transform.Translate(Vector3.right, Space.World);
+                Move(Vector3.right);
         }
         else if (GestureManager.State == GestureState.SwipeUp)
         {
             if (RayHit(GestureManager.orgLoc))
-                transform.Translate(Vector3.up, Space.World);
+                Move(Vector3.up);
         }
         else if (GestureManager.State == GestureState.SwipeDown)
         {
             if (RayHit(GestureManager.orgLoc))
-                transform.Translate(Vector3.down, Space.World);
+                Move(Vector3.down);
         }
     }
 
@@ -45,6 +45,13 @@ public class Player : MonoBehaviour {
 
     void Move(Vector3 dir)
     {
-
+        Vector3 rayDest = transform.position + dir;
+        rayDest = Camera.main.WorldToScreenPoint(rayDest);
+        Ray ray = Camera.main.ScreenPointToRay(rayDest);
+        if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("BasicBlock"))
+        {
+            transform.position = hit.transform.position;
+            Destroy(hit.transform.gameObject);
+        }
     }
 }
