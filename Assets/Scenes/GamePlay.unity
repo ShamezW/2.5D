@@ -190,7 +190,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fdf4edf6de1072d44b8f3b3f34aef441, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: fdf4edf6de1072d44b8f3b3f34aef441, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -850,7 +850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35d955c9fb7d7c14abad94f687fc5cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 744289450}
+  target: {x: 0, y: 0, z: -2}
 --- !u!95 &1989240990
 Animator:
   serializedVersion: 3

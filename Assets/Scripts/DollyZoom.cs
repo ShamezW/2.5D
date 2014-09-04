@@ -3,7 +3,8 @@ using System.Collections;
 
 public class DollyZoom : MonoBehaviour
 {
-    public Transform target;
+    //public Transform target;
+    public Vector3 target;
     float initHeightAtDist;
 
     float FrustumHeightAtDistance(float distance)
@@ -23,13 +24,13 @@ public class DollyZoom : MonoBehaviour
 
     void Start()
     {
-        float distance = Vector3.Distance(transform.position, target.position);
+        float distance = Vector3.Distance(transform.position, target);
         initHeightAtDist = FrustumHeightAtDistance(distance);
     }
 
     void Update()
     {
-        float curDistance = Vector3.Distance(transform.position, target.position);
+        float curDistance = Vector3.Distance(transform.position, target);
         float needDistance = DistanceForHeightAndFov(initHeightAtDist, gameObject.camera.fieldOfView);
         float diff = curDistance - needDistance;
         transform.Translate(0, 0, diff);
