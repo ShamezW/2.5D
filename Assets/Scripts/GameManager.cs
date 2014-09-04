@@ -35,4 +35,9 @@ public class GameManager : Singleton<GameManager> {
     {
         Debug.Log("Paused");
     }
+
+    public void ResetLevel()
+    {
+
+    }
 }
