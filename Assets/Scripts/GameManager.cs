@@ -3,7 +3,13 @@ using System.Collections;
 
 public class GameManager : Singleton<GameManager> {
     public Animator cameraAnimator;
-    private bool orthoToggle = false;
+    public static bool orthoToggle = false;
+
+    void Start()
+    {
+        LevelData[] levels = Resources.LoadAll<LevelData>("Levels");
+        levels[0].CreateLevel();
+    }
 
     void Update()
     {
@@ -13,15 +19,15 @@ public class GameManager : Singleton<GameManager> {
 
     public void ToggleOrthoMode()
     {
-        if (!Instance.orthoToggle)
+        if (!orthoToggle)
         {
             Instance.cameraAnimator.SetTrigger("Ortho");
-            Instance.orthoToggle = true;
+            orthoToggle = true;
         }
         else
         {
             Instance.cameraAnimator.SetTrigger("Persp");
-            Instance.orthoToggle = false;
+            orthoToggle = false;
         }
     }
 

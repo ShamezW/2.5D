@@ -3,7 +3,6 @@ using System.Collections;
 
 public class BaseCube : MonoBehaviour 
 {
-    public bool rotEnabled;
     public float rotSpeed = 0.3f;
 
     private Quaternion startAngle;
@@ -11,8 +10,9 @@ public class BaseCube : MonoBehaviour
 	
 	void Update() 
     {
-        if (rotEnabled)
+        if (!GameManager.orthoToggle)
             SwipeControls();
+
 	}
 
     void SwipeControls()

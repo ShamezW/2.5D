@@ -20,7 +20,9 @@ public class GestureManager : Singleton<GestureManager>
     [HideInInspector]
     public static GestureState State;
 
-    private Vector2 orgLoc;
+    public static Vector2 orgLoc;
+
+    private int touchID = 0;
 
     void Start()
     {
@@ -59,5 +61,17 @@ public class GestureManager : Singleton<GestureManager>
                 }
             }
         }
+    }
+
+    public static Vector2 GetPos(bool newTouch)
+    {
+        if (newTouch)
+            Instance.touchID = Input.touches.Length - 1;
+        return Input.touches[Instance.touchID].position;
+    }
+
+    public static Touch GetLastTouch()
+    {
+        return Input.touches[Input.touchCount - 1];
     }
 }
