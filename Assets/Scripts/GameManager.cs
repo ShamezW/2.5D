@@ -7,7 +7,7 @@ public class GameManager : Singleton<GameManager> {
 
     void Start()
     {
-        //LevelData[] levels = Resources.LoadAll<LevelData>("Levels");
+        LevelData[] levels = Resources.LoadAll<LevelData>("Levels");
         //levels[0].CreateLevel();
     }
 
