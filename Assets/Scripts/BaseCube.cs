@@ -8,6 +8,11 @@ public class BaseCube : MonoBehaviour
     private Quaternion startAngle;
     private Quaternion targetAngle;
 	
+    void Start()
+    {
+        GameManager.onLevelCompleated += OnCompleated;
+    }
+
 	void Update() 
     {
         if (!GameManager.orthoToggle)
@@ -55,8 +60,10 @@ public class BaseCube : MonoBehaviour
         }
     }
 
-    float Round90(float num)
+    void OnCompleated()
     {
-        return Mathf.Round(num / 90f) * 90f;
+        startAngle = transform.rotation;
+        targetAngle = Quaternion.identity;
+        StartCoroutine(Swipe());
     }
 }

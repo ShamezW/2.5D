@@ -52,6 +52,9 @@ public class Player : MonoBehaviour {
         {
             transform.position = hit.transform.position;
             Destroy(hit.transform.gameObject);
+            GameManager.numBlocks--;
         }
+        if (GameManager.numBlocks == 0)
+            GameManager.LevelCompleate();
     }
 }
