@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections;
 
+public enum GameMode {Menu, Game}
+
 public class GameManager : Singleton<GameManager> {
     public Animator cameraAnimator;
     public static bool orthoToggle = false;
@@ -11,14 +13,22 @@ public class GameManager : Singleton<GameManager> {
     public GameObject JumperBlock;
     public GameObject BlockerBlock;
 
+    public LevelData[] levels;
+
     public delegate void GameManagerEvents();
     public static event GameManagerEvents onLevelCompleated;
+    public static event GameManagerEvents onMenuActive;
+    public static event GameManagerEvents onGameActive;
+
+    void Awake()
+    {
+        levels = Resources.LoadAll<LevelData>("Levels");
+    }
 
     void Start()
     {
-        LevelData[] levels = Resources.LoadAll<LevelData>("Levels");
-        levels[0].CreateLevel();
-        numBlocks = GameObject.FindGameObjectsWithTag("BasicBlock").Length;
+        if (onMenuActive != null)
+            onMenuActive();
     }
 
     void Update()
@@ -46,5 +56,13 @@ public class GameManager : Singleton<GameManager> {
         if (onLevelCompleated != null)
             onLevelCompleated();
         Instance.ToggleOrthoMode();
+    }
+
+    public static void LoadLevel(int index)
+    {
+        Instance.levels[index].CreateLevel();
+        numBlocks = GameObject.FindGameObjectsWithTag("BasicBlock").Length;
+        if (onGameActive != null)
+            onGameActive();
     }
 }
