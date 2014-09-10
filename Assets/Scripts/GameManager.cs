@@ -8,17 +8,20 @@ public class GameManager : Singleton<GameManager> {
     public static bool orthoToggle = false;
     public static int numBlocks;
 
-    public GameObject PlayerBlock;
-    public GameObject BasicBlock;
-    public GameObject JumperBlock;
-    public GameObject BlockerBlock;
+    public GameObject
+        PlayerBlock,
+        BasicBlock,
+        JumperBlock,
+        BlockerBlock;
 
+    [HideInInspector]
     public LevelData[] levels;
 
     public delegate void GameManagerEvents();
-    public static event GameManagerEvents onLevelCompleated;
-    public static event GameManagerEvents onMenuActive;
-    public static event GameManagerEvents onGameActive;
+    public static event GameManagerEvents
+        onLevelCompleated,
+        onMenuActive,
+        onGameActive;
 
     void Awake()
     {

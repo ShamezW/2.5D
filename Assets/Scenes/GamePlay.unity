@@ -363,6 +363,38 @@ Prefab:
   m_RootGameObject: {fileID: 744289447}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &453104149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 453104150}
+  m_Layer: 5
+  m_Name: MainMenu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &453104150
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 453104149}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1244832772}
+  m_RootOrder: 4
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -1.52587891e-05, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1 &486071868
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +405,6 @@ GameObject:
   - 224: {fileID: 486071869}
   - 114: {fileID: 486071871}
   - 114: {fileID: 486071870}
-  - 114: {fileID: 486071872}
   m_Layer: 5
   m_Name: LevelSelect
   m_TagString: Untagged
@@ -431,18 +462,6 @@ MonoBehaviour:
   m_StartAxis: 0
   m_CellSize: {x: 48, y: 48}
   m_Spacing: {x: 26, y: 26}
---- !u!114 &486071872
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 486071868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd59b8b65bc9534c85cdb2f8147c378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mode: 0
 --- !u!1 &675179561
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,7 +738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1046945124
 RectTransform:
   m_ObjectHideFlags: 0
@@ -870,6 +889,7 @@ RectTransform:
   - {fileID: 1046945124}
   - {fileID: 2139052461}
   - {fileID: 486071869}
+  - {fileID: 453104150}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_AnchorMin: {x: 0, y: 0}
@@ -971,6 +991,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   completedMenu: {fileID: 1046945123}
+  pauseMenu: {fileID: 2139052460}
+  levelSelect: {fileID: 486071868}
+  hud: {fileID: 1923523117}
+  mainMenu: {fileID: 453104149}
 --- !u!1 &1571451475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,7 +1065,6 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 224: {fileID: 1923523118}
-  - 114: {fileID: 1923523119}
   m_Layer: 5
   m_Name: Hud
   m_TagString: Untagged
@@ -1067,18 +1090,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: .5, y: .5}
---- !u!114 &1923523119
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1923523117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5dd59b8b65bc9534c85cdb2f8147c378, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mode: 1
 --- !u!1 &1989240983
 GameObject:
   m_ObjectHideFlags: 0
