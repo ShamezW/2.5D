@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class LevelSelect : MonoBehaviour {
+public class LevelSelectMenu : MonoBehaviour {
     public GameObject uiPrefab;
 
 	void Start() 

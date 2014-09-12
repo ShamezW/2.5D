@@ -1,17 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using System.Collections;
 
-public class LevelSelectBtn : MonoBehaviour {
+public class LevelSelectBtn : MonoBehaviour, IPointerClickHandler {
+    [HideInInspector]
     public int index;
 
-    void Start()
-    {
-        gameObject.GetComponent<Button>().onClick.AddListener(LoadLevel);
-    }
-
-    void LoadLevel()
+    public void OnPointerClick(PointerEventData data)
     {
         GameManager.LoadLevel(index);
     }
