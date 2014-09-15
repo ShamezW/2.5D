@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 
 	void Update () 
     {
-        if (GameManager.orthoToggle)
+        if (GameManager.mode == GameMode.Game && GameManager.orthoToggle)
             SwipeControls();
 	}
 
@@ -56,5 +56,15 @@ public class Player : MonoBehaviour {
         }
         if (GameManager.numBlocks == 0)
             GameManager.LevelCompleate();
+    }
+
+    public bool checkVis()
+    {
+        Vector3 rayDest = transform.position;
+        rayDest = Camera.main.WorldToScreenPoint(rayDest);
+        Ray ray = Camera.main.ScreenPointToRay(rayDest);
+        if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("Player"))
+            return true;
+        return false;
     }
 }

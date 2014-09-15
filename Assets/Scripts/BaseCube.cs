@@ -11,13 +11,15 @@ public class BaseCube : MonoBehaviour
     void Start()
     {
         GameManager.onLevelCompleated += OnCompleated;
+        GameManager.onMenuActive += OnMenu;
+        GameManager.onGameActive += OnGame;
     }
 
 	void Update() 
     {
-        if (!GameManager.orthoToggle)
-            SwipeControls();
-
+        if (GameManager.mode == GameMode.Game)
+            if (!GameManager.orthoToggle)
+                SwipeControls();
 	}
 
     void SwipeControls()
@@ -60,10 +62,31 @@ public class BaseCube : MonoBehaviour
         }
     }
 
+    public void CleanUp()
+    {
+        foreach(Transform i in transform)
+        {
+            Destroy(i.gameObject);
+        }
+    }
+
+    #region events
     void OnCompleated()
     {
         startAngle = transform.rotation;
         targetAngle = Quaternion.identity;
         StartCoroutine(Swipe());
     }
+
+    void OnMenu()
+    {
+        gameObject.SetActive(false);
+    }
+
+    void OnGame()
+    {
+        gameObject.SetActive(true);
+    }
+
+    #endregion
 }

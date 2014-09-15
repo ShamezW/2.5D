@@ -11,5 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4fbc3a43f455984d9432219f31256be, type: 3}
   m_Name: Level02
   m_EditorClassIdentifier: 
-  PlayerBlockLoc: {x: 0, y: 0, z: 0}
-  myLevel: []
+  PlayerBlockLoc: {x: 0, y: 0, z: 2}
+  myLevel:
+  - blockType: 0
+    Location: {x: 0, y: 0, z: 0}
+    Prefab: {fileID: 0}
