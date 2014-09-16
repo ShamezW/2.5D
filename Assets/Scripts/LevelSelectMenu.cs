@@ -13,7 +13,7 @@ public class LevelSelectMenu : MonoBehaviour {
         {
             GameObject obj = Instantiate(uiPrefab) as GameObject;
             obj.transform.parent = gameObject.transform;
-            obj.transform.GetChild(0).GetComponent<Text>().text = i.ToString();
+            obj.transform.GetChild(0).GetComponent<Text>().text = (i + 1).ToString();
             obj.GetComponent<LevelSelectBtn>().index = i;
         }
 	}

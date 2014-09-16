@@ -68,12 +68,8 @@ public class GameManager : Singleton<GameManager> {
     {
         if (!orthoToggle)
         {
-            if (player.checkVis())
-            {
-                Instance.cameraAnimator.SetTrigger("Ortho");
-                orthoToggle = true;
-            }
-            else Debug.Log("Player is Blocked");
+            Instance.cameraAnimator.SetTrigger("Ortho");
+            orthoToggle = true;
         }
         else
         {
