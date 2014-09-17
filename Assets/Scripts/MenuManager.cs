@@ -22,7 +22,7 @@ public class MenuManager : Singleton<MenuManager> {
     #region ButtonMethods
     public void PauseBtn()
     {
-        GameManager.PauseGame();
+        GameManager.MainMenu();
     }
     #endregion
 

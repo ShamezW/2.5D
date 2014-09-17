@@ -78,17 +78,23 @@ public class GameManager : Singleton<GameManager> {
         }
     }
 
-    public static void LevelCompleate()
+    #region MainStates
+    public static void PauseGame()
     {
         mode = GameMode.Pause;
-
-        Instance.ToggleOrthoMode();
-
-        //Fire onLevelCompleated
-        if (onLevelCompleated != null)
-            onLevelCompleated();
+        if (onPauseActive != null)
+            onPauseActive();
     }
 
+    public static void MainMenu()
+    {
+        mode = GameMode.Menus;
+        if (onMenuActive != null)
+            onMenuActive();
+    }
+    #endregion
+
+    #region LevelLoading
     public static void NextLevel()
     {
         int len = Instance.levels.Length - 1;
@@ -115,11 +121,15 @@ public class GameManager : Singleton<GameManager> {
         numBlocks = GameObject.FindGameObjectsWithTag("BasicBlock").Length;
         Instance.player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
-
-    public static void PauseGame()
+    public static void LevelCompleate()
     {
         mode = GameMode.Pause;
-        if (onPauseActive != null)
-            onPauseActive();
+
+        Instance.ToggleOrthoMode();
+
+        //Fire onLevelCompleated
+        if (onLevelCompleated != null)
+            onLevelCompleated();
     }
+    #endregion
 }
