@@ -59,7 +59,6 @@ public class GameManager : Singleton<GameManager> {
                 break;
 
             case GameMode.Pause:
-                //
                 break;
         }
     }

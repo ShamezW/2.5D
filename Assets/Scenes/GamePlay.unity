@@ -85,7 +85,6 @@ GameObject:
   - 114: {fileID: 168553521}
   - 114: {fileID: 168553520}
   - 114: {fileID: 168553519}
-  - 114: {fileID: 168553523}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -147,17 +146,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!114 &168553523
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 168553518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67ffdd74653529a4ebbd5bbb8ca149d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &278754026
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,10 +462,10 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 48, y: 48}
-  m_Spacing: {x: 26, y: 26}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_CellSize: {x: 64, y: 64}
+  m_Spacing: {x: 38, y: 38}
+  m_Constraint: 1
+  m_ConstraintCount: 4
 --- !u!1 &675179561
 GameObject:
   m_ObjectHideFlags: 0
@@ -928,7 +916,7 @@ MonoBehaviour:
   m_Script: {fileID: -990768443, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Resolution: {x: 1680, y: 720}
+  m_Resolution: {x: 1280, y: 720}
   m_CanvasScaleMode: 0
   m_MatchWidthOrHeight: 1
 --- !u!1 &1306448783
@@ -941,8 +929,6 @@ GameObject:
   - 224: {fileID: 1306448784}
   - 222: {fileID: 1306448786}
   - 114: {fileID: 1306448785}
-  - 114: {fileID: 1306448787}
-  - 114: {fileID: 1306448788}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -995,28 +981,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1306448783}
   m_HideIfInvisible: 0
---- !u!114 &1306448787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1306448783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 925a2df448897c9478d5778048459f33, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1306448788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1306448783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83bdce81854981a4ea260fc37ebf932c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1351811112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,14 +1200,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bef3d242a13c447ac90c2d2dc213b1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
+  mode: 1
   intensity: 1.85000002
-  chromaticAberration: 1
-  axialAberration: 1.39999998
+  chromaticAberration: 2
+  axialAberration: 5
   blur: .5
   blurSpread: .100000001
-  luminanceDependency: .145999998
-  blurDistance: 2.31999993
+  luminanceDependency: .00100000005
+  blurDistance: 2.45000005
   vignetteShader: {fileID: 4800000, guid: 627943dc7a9a74286b70a4f694a0acd5, type: 3}
   separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
   chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
