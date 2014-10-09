@@ -22,6 +22,21 @@ public class MenuManager : Singleton<MenuManager> {
     #region ButtonMethods
     public void PauseBtn()
     {
+        GameManager.PauseGame();
+    }
+
+    public void Return()
+    {
+        GameManager.ResumeGame();
+    }
+
+    public void Restart()
+    {
+        GameManager.ReloadLevel();
+    }
+
+    public void MainMenu()
+    {
         GameManager.MainMenu();
     }
     #endregion
@@ -37,6 +52,7 @@ public class MenuManager : Singleton<MenuManager> {
         hud.SetActive(true);
         levelSelect.SetActive(false);
         completedMenu.SetActive(false);
+        pauseMenu.SetActive(false);
     }
 
     void MenuActive()
@@ -44,6 +60,7 @@ public class MenuManager : Singleton<MenuManager> {
         hud.SetActive(false);
         levelSelect.SetActive(true);
         completedMenu.SetActive(false);
+        pauseMenu.SetActive(false);
     }
 
     void PauseActive()

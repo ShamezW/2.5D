@@ -85,6 +85,13 @@ public class GameManager : Singleton<GameManager> {
             onPauseActive();
     }
 
+    public static void ResumeGame()
+    {
+        mode = GameMode.Game;
+        if (onGameActive != null)
+            onGameActive();
+    }
+
     public static void MainMenu()
     {
         mode = GameMode.Menus;
@@ -120,6 +127,12 @@ public class GameManager : Singleton<GameManager> {
         numBlocks = GameObject.FindGameObjectsWithTag("BasicBlock").Length;
         Instance.player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
+
+    public static void ReloadLevel()
+    {
+        LoadLevel(Instance.currentLevel);
+    }
+
     public static void LevelCompleate()
     {
         mode = GameMode.Pause;
