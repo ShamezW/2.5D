@@ -103,9 +103,8 @@ public class GameManager : Singleton<GameManager> {
     #region LevelLoading
     public static void NextLevel()
     {
-        int len = Instance.levels.Length - 1;
         int next = Instance.currentLevel + 1;
-        if (next > len)
+        if (next < Instance.levels.Length)
             LoadLevel(next);
         else
             Debug.Log("LastLevel");

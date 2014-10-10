@@ -39,6 +39,11 @@ public class MenuManager : Singleton<MenuManager> {
     {
         GameManager.MainMenu();
     }
+
+    public void NextLevel()
+    {
+        GameManager.NextLevel();
+    }
     #endregion
 
     #region Events
