@@ -8,7 +8,7 @@ public class GameManager : Singleton<GameManager> {
 
     public Animator cameraAnimator;
     public static bool orthoToggle = false;
-    public static int numBlocks;
+    //public static int numBlocks;
 
     public BaseCube baseCube;
     private Player player;
@@ -30,6 +30,11 @@ public class GameManager : Singleton<GameManager> {
         onMenuActive,
         onGameActive,
         onPauseActive;
+
+    public static int numBlocks
+    {
+        get { return Instance.baseCube.transform.childCount; }
+    }
 
     void Awake()
     {
@@ -123,7 +128,6 @@ public class GameManager : Singleton<GameManager> {
 
         Instance.levels[index].CreateLevel();
         Instance.currentLevel = index;
-        numBlocks = GameObject.FindGameObjectsWithTag("BasicBlock").Length;
         Instance.player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
