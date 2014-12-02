@@ -82,6 +82,26 @@ public class GameManager : Singleton<GameManager> {
         }
     }
 
+    public void SetOrthoMode(bool value)
+    {
+        if (!value)
+        {
+            Instance.cameraAnimator.SetTrigger("Persp");
+            orthoToggle = false;
+        }
+        else
+        {
+            Instance.cameraAnimator.SetTrigger("Ortho");
+            orthoToggle = true;
+        }
+    }
+
+    public static void isCompleated()
+    {
+        if (numBlocks == 1)
+            LevelCompleate();
+    }
+
     #region MainStates
     public static void PauseGame()
     {
@@ -122,6 +142,8 @@ public class GameManager : Singleton<GameManager> {
         //Fire onGameActive
         if (onGameActive != null)
             onGameActive();
+
+        Instance.SetOrthoMode(false);
 
         //Clean up left over cubes
         Instance.baseCube.CleanUp();

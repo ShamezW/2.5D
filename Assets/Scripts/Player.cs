@@ -53,11 +53,10 @@ public class Player : MonoBehaviour {
             transform.position = hit.transform.position;
             Destroy(hit.transform.gameObject);
         }
-        if (GameManager.numBlocks == 1)
-            GameManager.LevelCompleate();
+        GameManager.isCompleated();
     }
 
-    public bool checkVis()
+    public bool checkVis() //FIXME
     {
         Vector3 rayDest = transform.position;
         rayDest = Camera.main.WorldToScreenPoint(rayDest);
