@@ -13,41 +13,7 @@ public class BaseCube : MonoBehaviour
         GameManager.onLevelCompleated += OnCompleated;
         GameManager.onMenuActive += OnMenu;
         GameManager.onGameActive += OnGame;
-    }
-
-	void Update() 
-    {
-        if (GameManager.mode == GameMode.Game)
-            if (!GameManager.orthoToggle)
-                SwipeControls();
-	}
-
-    void SwipeControls()
-    {
-        if (GestureManager.State == GestureState.SwipeLeft)
-        {
-            startAngle = transform.rotation;
-            targetAngle = Quaternion.AngleAxis(90f, Vector3.up) * transform.rotation;
-            StartCoroutine(Swipe());
-        }
-        else if (GestureManager.State == GestureState.SwipeRight)
-        {
-            startAngle = transform.rotation;
-            targetAngle = Quaternion.AngleAxis(90f, -Vector3.up) * transform.rotation;
-            StartCoroutine(Swipe());
-        }
-        else if (GestureManager.State == GestureState.SwipeUp)
-        {
-            startAngle = transform.rotation;
-            targetAngle = Quaternion.AngleAxis(90f, Vector3.right) * transform.rotation;
-            StartCoroutine(Swipe());
-        }
-        else if (GestureManager.State == GestureState.SwipeDown)
-        {
-            startAngle = transform.rotation;
-            targetAngle = Quaternion.AngleAxis(90f, -Vector3.right) * transform.rotation;
-            StartCoroutine(Swipe());
-        }
+        GestureManager.onGesture += OnGesture;
     }
 
     IEnumerator Swipe()
@@ -88,5 +54,35 @@ public class BaseCube : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    void OnGesture(GestureState eventData)
+    {
+        if (GameManager.mode == GameMode.Game && !GameManager.orthoToggle)
+        {
+            if (eventData == GestureState.SwipeLeft)
+            {
+                startAngle = transform.rotation;
+                targetAngle = Quaternion.AngleAxis(90f, Vector3.up) * transform.rotation;
+                StartCoroutine(Swipe());
+            }
+            else if (eventData == GestureState.SwipeRight)
+            {
+                startAngle = transform.rotation;
+                targetAngle = Quaternion.AngleAxis(90f, -Vector3.up) * transform.rotation;
+                StartCoroutine(Swipe());
+            }
+            else if (eventData == GestureState.SwipeUp)
+            {
+                startAngle = transform.rotation;
+                targetAngle = Quaternion.AngleAxis(90f, Vector3.right) * transform.rotation;
+                StartCoroutine(Swipe());
+            }
+            else if (eventData == GestureState.SwipeDown)
+            {
+                startAngle = transform.rotation;
+                targetAngle = Quaternion.AngleAxis(90f, -Vector3.right) * transform.rotation;
+                StartCoroutine(Swipe());
+            }
+        }
+    }
     #endregion
 }

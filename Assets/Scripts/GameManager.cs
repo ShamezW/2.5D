@@ -3,15 +3,14 @@ using System.Collections;
 
 public enum GameMode {Menus, Game, Pause}
 
-public class GameManager : Singleton<GameManager> {
+public class GameManager : Singleton<GameManager> 
+{
     public static GameMode mode;
 
     public Animator cameraAnimator;
-    public static bool orthoToggle = false;
-    //public static int numBlocks;
+    //public static bool orthoToggle = false;
 
     public BaseCube baseCube;
-    private Player player;
 
     private int currentLevel = 0;
 
@@ -31,6 +30,12 @@ public class GameManager : Singleton<GameManager> {
         onGameActive,
         onPauseActive;
 
+    public static bool orthoToggle
+    {
+        get { return Instance.cameraAnimator.GetBool("bOrtho"); }
+        set { Instance.cameraAnimator.SetBool("bOrtho", value); }
+    }
+
     public static int numBlocks
     {
         get { return Instance.baseCube.transform.childCount; }
@@ -38,9 +43,8 @@ public class GameManager : Singleton<GameManager> {
 
     void Awake()
     {
+        GestureManager.onGesture += TouchGesture;
         levels = Resources.LoadAll<LevelData>("Levels");
-
-        //Init Gamemode
         mode = GameMode.Menus;
     }
 
@@ -51,49 +55,14 @@ public class GameManager : Singleton<GameManager> {
             onMenuActive();
     }
 
-    void Update()
-    {
-        switch(mode)
-        {
-            case GameMode.Menus:
-                break;
-
-            case GameMode.Game:
-                if (GestureManager.State == GestureState.DoubleTap)
-                    ToggleOrthoMode();
-                break;
-
-            case GameMode.Pause:
-                break;
-        }
-    }
-
     public void ToggleOrthoMode()
     {
-        if (!orthoToggle)
-        {
-            Instance.cameraAnimator.SetTrigger("Ortho");
-            orthoToggle = true;
-        }
-        else
-        {
-            Instance.cameraAnimator.SetTrigger("Persp");
-            orthoToggle = false;
-        }
+        orthoToggle = (orthoToggle) ? false : true;
     }
 
     public void SetOrthoMode(bool value)
     {
-        if (!value)
-        {
-            Instance.cameraAnimator.SetTrigger("Persp");
-            orthoToggle = false;
-        }
-        else
-        {
-            Instance.cameraAnimator.SetTrigger("Ortho");
-            orthoToggle = true;
-        }
+        orthoToggle = value;
     }
 
     public static void isCompleated()
@@ -150,7 +119,6 @@ public class GameManager : Singleton<GameManager> {
 
         Instance.levels[index].CreateLevel();
         Instance.currentLevel = index;
-        Instance.player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     public static void ReloadLevel()
@@ -162,11 +130,19 @@ public class GameManager : Singleton<GameManager> {
     {
         mode = GameMode.Pause;
 
-        Instance.ToggleOrthoMode();
+        Instance.SetOrthoMode(false);
 
         //Fire onLevelCompleated
         if (onLevelCompleated != null)
             onLevelCompleated();
+    }
+    #endregion
+
+    #region Events
+    void TouchGesture(GestureState eventData)
+    {
+        if (mode == GameMode.Game && eventData == GestureState.DoubleTap)
+            ToggleOrthoMode();
     }
     #endregion
 }

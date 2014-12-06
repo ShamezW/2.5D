@@ -4,34 +4,9 @@ using System.Collections;
 public class Player : MonoBehaviour {
     private RaycastHit hit;
 
-	void Update () 
+    void Start()
     {
-        if (GameManager.mode == GameMode.Game && GameManager.orthoToggle)
-            SwipeControls();
-	}
-
-    void SwipeControls()
-    {
-        if (GestureManager.State == GestureState.SwipeLeft)
-        {
-            if (RayHit(GestureManager.orgLoc))
-                Move(Vector3.left);
-        }
-        else if (GestureManager.State == GestureState.SwipeRight)
-        {
-            if (RayHit(GestureManager.orgLoc))
-                Move(Vector3.right);
-        }
-        else if (GestureManager.State == GestureState.SwipeUp)
-        {
-            if (RayHit(GestureManager.orgLoc))
-                Move(Vector3.up);
-        }
-        else if (GestureManager.State == GestureState.SwipeDown)
-        {
-            if (RayHit(GestureManager.orgLoc))
-                Move(Vector3.down);
-        }
+        GestureManager.onGesture += OnGesture;
     }
 
     bool RayHit(Vector2 pos)
@@ -65,4 +40,33 @@ public class Player : MonoBehaviour {
             return true;
         return false;
     }
+
+    #region Events
+    void OnGesture(GestureState eventData)
+    {
+        if (GameManager.mode == GameMode.Game && GameManager.orthoToggle)
+        {
+            if (eventData == GestureState.SwipeLeft)
+            {
+                if (RayHit(GestureManager.orgLoc))
+                    Move(Vector3.left);
+            }
+            else if (eventData == GestureState.SwipeRight)
+            {
+                if (RayHit(GestureManager.orgLoc))
+                    Move(Vector3.right);
+            }
+            else if (eventData == GestureState.SwipeUp)
+            {
+                if (RayHit(GestureManager.orgLoc))
+                    Move(Vector3.up);
+            }
+            else if (eventData == GestureState.SwipeDown)
+            {
+                if (RayHit(GestureManager.orgLoc))
+                    Move(Vector3.down);
+            }
+        }
+    }
+    #endregion
 }
