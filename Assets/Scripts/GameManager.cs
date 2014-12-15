@@ -6,10 +6,7 @@ public enum GameMode {Menus, Game, Pause}
 public class GameManager : Singleton<GameManager> 
 {
     public static GameMode mode;
-
     public Animator cameraAnimator;
-    //public static bool orthoToggle = false;
-
     public BaseCube baseCube;
 
     private int currentLevel = 0;
@@ -28,7 +25,8 @@ public class GameManager : Singleton<GameManager>
         onLevelCompleated,
         onMenuActive,
         onGameActive,
-        onPauseActive;
+        onPauseActive,
+        onOrthoActive;
 
     public static bool orthoToggle
     {
@@ -55,14 +53,19 @@ public class GameManager : Singleton<GameManager>
             onMenuActive();
     }
 
-    public void ToggleOrthoMode()
+    public static void ToggleOrthoMode()
     {
-        orthoToggle = (orthoToggle) ? false : true;
+        if (orthoToggle)
+            SetOrthoMode(false);
+        else
+            SetOrthoMode(true);
     }
 
-    public void SetOrthoMode(bool value)
+    public static void SetOrthoMode(bool value)
     {
         orthoToggle = value;
+        if (onOrthoActive != null && orthoToggle == true)
+            onOrthoActive();
     }
 
     public static void isCompleated()
@@ -112,7 +115,7 @@ public class GameManager : Singleton<GameManager>
         if (onGameActive != null)
             onGameActive();
 
-        Instance.SetOrthoMode(false);
+        SetOrthoMode(false);
 
         //Clean up left over cubes
         Instance.baseCube.CleanUp();
@@ -130,7 +133,7 @@ public class GameManager : Singleton<GameManager>
     {
         mode = GameMode.Pause;
 
-        Instance.SetOrthoMode(false);
+        SetOrthoMode(false);
 
         //Fire onLevelCompleated
         if (onLevelCompleated != null)

@@ -16,6 +16,11 @@ public class BaseCube : MonoBehaviour
         GestureManager.onGesture += OnGesture;
     }
 
+    void OnEnable()
+    {
+        Start();
+    }
+
     void OnDisable()
     {
         GameManager.onLevelCompleated -= OnCompleated;
@@ -30,7 +35,7 @@ public class BaseCube : MonoBehaviour
         float count = 0f;
         while(count < 1f)
         {
-            count = (Time.time - start) / 0.2f;
+            count = (Time.time - start) / rotSpeed;
             transform.rotation = Quaternion.Slerp(startAngle, targetAngle, count);
             yield return null;
         }

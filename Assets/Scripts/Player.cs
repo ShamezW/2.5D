@@ -4,13 +4,15 @@ using System.Collections;
 public class Player : MonoBehaviour {
     private RaycastHit hit;
 
-    void Start()
+    void OnEnable()
     {
+        GameManager.onOrthoActive += checkVis;
         GestureManager.onGesture += OnGesture;
     }
 
     void OnDisable()
     {
+        GameManager.onOrthoActive -= checkVis;
         GestureManager.onGesture -= OnGesture;
     }
 
@@ -36,14 +38,13 @@ public class Player : MonoBehaviour {
         GameManager.isCompleated();
     }
 
-    public bool checkVis() //FIXME
+    public void checkVis() //FIXME
     {
         Vector3 rayDest = transform.position;
         rayDest = Camera.main.WorldToScreenPoint(rayDest);
         Ray ray = Camera.main.ScreenPointToRay(rayDest);
-        if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("Player"))
-            return true;
-        return false;
+        if (Physics.Raycast(ray, out hit) && !hit.transform.CompareTag("Player"))
+            GameManager.SetOrthoMode(false);
     }
 
     #region Events
