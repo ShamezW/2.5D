@@ -25,13 +25,12 @@ public class GameManager : Singleton<GameManager>
         onLevelCompleated,
         onMenuActive,
         onGameActive,
-        onPauseActive,
-        onOrthoActive;
+        onPauseActive;
 
     public static bool orthoToggle
     {
-        get { return Instance.cameraAnimator.GetBool("bOrtho"); }
-        set { Instance.cameraAnimator.SetBool("bOrtho", value); }
+        get { return Camera.main.fieldOfView == 1f; }
+        set { Camera.main.GetComponent<DollyZoom>().StartOrthoTween(value); }
     }
 
     public static int numBlocks
@@ -64,8 +63,6 @@ public class GameManager : Singleton<GameManager>
     public static void SetOrthoMode(bool value)
     {
         orthoToggle = value;
-        if (onOrthoActive != null && orthoToggle == true)
-            onOrthoActive();
     }
 
     public static void isCompleated()

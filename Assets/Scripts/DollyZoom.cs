@@ -5,7 +5,15 @@ public class DollyZoom : MonoBehaviour
 {
     //public Transform target;
     public Vector3 target;
-    float initHeightAtDist;
+    private float initHeightAtDist;
+
+    //TweenVars
+    public float perspFov = 90f;
+    public float orthoFov = 1f;
+    public float TweenSpeed = 0.5f;
+
+    public delegate void DollyZoomEvents();
+    public static event DollyZoomEvents onOrtho;
 
     float FrustumHeightAtDistance(float distance)
     {
@@ -34,5 +42,30 @@ public class DollyZoom : MonoBehaviour
         float needDistance = DistanceForHeightAndFov(initHeightAtDist, gameObject.camera.fieldOfView);
         float diff = curDistance - needDistance;
         transform.Translate(0, 0, diff);
+    }
+
+    public void StartOrthoTween(bool value)
+    {
+        if (value && camera.fieldOfView == 90)
+            StartCoroutine(OrthoTween(false));
+        else if (!value && camera.fieldOfView == 1)
+            StartCoroutine(OrthoTween(true));
+    }
+
+    IEnumerator OrthoTween(bool value)
+    {
+        float start = (value) ? orthoFov : perspFov;
+        float end = (value) ? perspFov : orthoFov;
+
+        float startTime = Time.time;
+        float count = 0f;
+        while (count < 1f)
+        {
+            count = (Time.time - startTime) / TweenSpeed;
+            camera.fieldOfView = Mathf.Lerp(start, end, count);
+            yield return null;
+        }
+        if (onOrtho != null && !value)
+            onOrtho();
     }
 }

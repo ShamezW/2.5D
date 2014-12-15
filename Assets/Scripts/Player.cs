@@ -6,13 +6,13 @@ public class Player : MonoBehaviour {
 
     void OnEnable()
     {
-        GameManager.onOrthoActive += checkVis;
+        DollyZoom.onOrtho += checkVis;
         GestureManager.onGesture += OnGesture;
     }
 
     void OnDisable()
     {
-        GameManager.onOrthoActive -= checkVis;
+        DollyZoom.onOrtho -= checkVis;
         GestureManager.onGesture -= OnGesture;
     }
 
