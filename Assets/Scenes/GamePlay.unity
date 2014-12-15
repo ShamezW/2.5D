@@ -1026,7 +1026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d428dd350b4f5f344bbbdccb05c0bf16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotSpeed: .300000012
+  rotSpeed: .200000003
 --- !u!1 &776135648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1060,8 +1060,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 117, y: -68}
-  m_SizeDelta: {x: 169, y: 90}
+  m_AnchoredPosition: {x: 140, y: -76}
+  m_SizeDelta: {x: 217, y: 106}
   m_Pivot: {x: .49999997, y: .499999881}
 --- !u!114 &776135650
 MonoBehaviour:
@@ -2403,8 +2403,8 @@ GameObject:
   - 20: {fileID: 1989240987}
   - 81: {fileID: 1989240984}
   - 114: {fileID: 1989240989}
-  - 95: {fileID: 1989240990}
   - 114: {fileID: 1989240985}
+  - 95: {fileID: 1989240990}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2498,6 +2498,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 0, y: 0, z: -2}
+  perspFov: 90
+  orthoFov: 1
+  TweenSpeed: .600000024
 --- !u!95 &1989240990
 Animator:
   serializedVersion: 3
@@ -2505,7 +2508,7 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1989240983}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: ebd7f17487ad1404c8d723b7b96d9738, type: 2}
   m_CullingMode: 0
