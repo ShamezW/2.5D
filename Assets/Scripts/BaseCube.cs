@@ -16,6 +16,14 @@ public class BaseCube : MonoBehaviour
         GestureManager.onGesture += OnGesture;
     }
 
+    void OnDisable()
+    {
+        GameManager.onLevelCompleated -= OnCompleated;
+        GameManager.onMenuActive -= OnMenu;
+        GameManager.onGameActive -= OnGame;
+        GestureManager.onGesture -= OnGesture;
+    }
+
     IEnumerator Swipe()
     {
         float start = Time.time;

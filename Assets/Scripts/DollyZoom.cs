@@ -28,7 +28,7 @@ public class DollyZoom : MonoBehaviour
         initHeightAtDist = FrustumHeightAtDistance(distance);
     }
 
-    void Update()
+    void LateUpdate()
     {
         float curDistance = Vector3.Distance(transform.position, target);
         float needDistance = DistanceForHeightAndFov(initHeightAtDist, gameObject.camera.fieldOfView);

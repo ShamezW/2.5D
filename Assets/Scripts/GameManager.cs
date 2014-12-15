@@ -67,7 +67,7 @@ public class GameManager : Singleton<GameManager>
 
     public static void isCompleated()
     {
-        if (numBlocks == 1)
+        if (GameObject.FindGameObjectsWithTag("BasicBlock").Length == 1) 
             LevelCompleate();
     }
 

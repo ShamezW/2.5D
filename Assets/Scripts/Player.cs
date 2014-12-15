@@ -9,6 +9,11 @@ public class Player : MonoBehaviour {
         GestureManager.onGesture += OnGesture;
     }
 
+    void OnDisable()
+    {
+        GestureManager.onGesture -= OnGesture;
+    }
+
     bool RayHit(Vector2 pos)
     {
         Ray ray = Camera.main.ScreenPointToRay(pos);
