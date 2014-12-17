@@ -949,7 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863ff5f565800fa4eb188631ed7cf2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraAnimator: {fileID: 1989240990}
+  cameraAnimator: {fileID: 0}
   baseCube: {fileID: 744289451}
   PlayerBlock: {fileID: 100000, guid: b86da8d050e134646930fab79a8f2882, type: 2}
   BasicBlock: {fileID: 100000, guid: aba82f5c0b2f23c4399d6a81fd5a352f, type: 2}
@@ -2404,7 +2404,6 @@ GameObject:
   - 81: {fileID: 1989240984}
   - 114: {fileID: 1989240989}
   - 114: {fileID: 1989240985}
-  - 95: {fileID: 1989240990}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2431,11 +2430,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mode: 0
-  intensity: 1.85000002
-  chromaticAberration: 2
+  intensity: 3
+  chromaticAberration: 3
   axialAberration: 5
   blur: .5
-  blurSpread: .100000001
+  blurSpread: .200000003
   luminanceDependency: .00100000005
   blurDistance: 2.45000005
   vignetteShader: {fileID: 4800000, guid: 627943dc7a9a74286b70a4f694a0acd5, type: 3}
@@ -2501,21 +2500,6 @@ MonoBehaviour:
   perspFov: 90
   orthoFov: 1
   TweenSpeed: .600000024
---- !u!95 &1989240990
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1989240983}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ebd7f17487ad1404c8d723b7b96d9738, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2102951079
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,10 +9,10 @@
  
         Pass {
             ZWrite Off
-            Cull Off
+            //Cull Off
             ColorMask RGB
             Lighting Off
-            Offset -1, -1
+            //Offset -1, -1
             Blend DstColor Zero
         Tags { "LightMode" = "ForwardBase" }
             CGPROGRAM

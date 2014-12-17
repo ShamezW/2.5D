@@ -33,9 +33,9 @@ public class Player : MonoBehaviour {
         if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("BasicBlock"))
         {
             transform.position = hit.transform.position;
-            Destroy(hit.transform.gameObject);
+            DestroyImmediate(hit.transform.gameObject);
+            GameManager.isCompleated();
         }
-        GameManager.isCompleated();
     }
 
     public void checkVis() //FIXME
