@@ -50,6 +50,7 @@ public class MenuManager : Singleton<MenuManager> {
     void LevelCompleted()
     {
         completedMenu.SetActive(true);
+        hud.SetActive(false);
     }
 
     void GameActive()
