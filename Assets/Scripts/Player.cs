@@ -27,17 +27,29 @@ public class Player : MonoBehaviour {
 
     void Move(Vector3 dir)
     {
+        StartCoroutine(MoveCo(dir));
+    }
+
+    IEnumerator MoveCo(Vector3 dir)
+    {
         Vector3 rayDest = transform.position + dir;
         rayDest = Camera.main.WorldToScreenPoint(rayDest);
         Ray ray = Camera.main.ScreenPointToRay(rayDest);
-        if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("BasicBlock"))
+
+        if (Physics.Raycast(ray, out hit) && hit.transform.GetComponent<Block>() != null)
         {
-            transform.position = hit.transform.position;
-            DestroyImmediate(hit.transform.gameObject);
-            GameManager.isCompleated();
+            transform.position = hit.transform.GetComponent<Block>().Use(transform.position);
+
+            yield return null;
+            rayDest = Camera.main.WorldToScreenPoint(transform.position);
+            ray = Camera.main.ScreenPointToRay(rayDest);
+            if (Physics.Raycast(ray, out hit) && hit.transform.GetComponent<Block>() != null)
+            {
+                Debug.Log("Resursive method");
+                Move(Vector3.zero);
+            }
         }
     }
-
     public void checkVis() //FIXME
     {
         Vector3 rayDest = transform.position;
