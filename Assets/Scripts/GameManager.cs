@@ -6,7 +6,6 @@ public enum GameMode {Menus, Game, Pause}
 public class GameManager : Singleton<GameManager> 
 {
     public static GameMode mode;
-    public Animator cameraAnimator;
     public BaseCube baseCube;
 
     private int currentLevel = 0;

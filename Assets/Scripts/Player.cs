@@ -50,13 +50,17 @@ public class Player : MonoBehaviour {
             }
         }
     }
+
     public void checkVis() //FIXME
     {
         Vector3 rayDest = transform.position;
         rayDest = Camera.main.WorldToScreenPoint(rayDest);
         Ray ray = Camera.main.ScreenPointToRay(rayDest);
         if (Physics.Raycast(ray, out hit) && !hit.transform.CompareTag("Player"))
+        {
             GameManager.SetOrthoMode(false);
+            Camera.main.GetComponent<DollyZoom>().StartShakeTween();
+        }
     }
 
     #region Events
