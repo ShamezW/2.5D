@@ -18,11 +18,13 @@ public class Player : MonoBehaviour {
 
     bool RayHit(Vector2 pos)
     {
-        Ray ray = Camera.main.ScreenPointToRay(pos);
-        if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("Player"))
-            return true;
-        else
-            return false;
+        //Testing to need to swip on the player at all.
+        //Ray ray = Camera.main.ScreenPointToRay(pos);
+        //if (Physics.Raycast(ray, out hit) && hit.transform.CompareTag("Player"))
+        //    return true;
+        //else
+        //    return false;
+        return true;
     }
 
     void Move(Vector3 dir)
@@ -43,15 +45,17 @@ public class Player : MonoBehaviour {
             yield return null;
             rayDest = Camera.main.WorldToScreenPoint(transform.position);
             ray = Camera.main.ScreenPointToRay(rayDest);
-            if (Physics.Raycast(ray, out hit) && hit.transform.GetComponent<Block>() != null)
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, 9) && hit.transform.GetComponent<Block>() != null)
             {
-                Debug.Log("Resursive method");
-                Move(Vector3.zero);
+                if (hit.transform.GetComponent<JumperBlock>() != null)
+                    Move(dir);
+                else
+                    Move(Vector3.zero);
             }
         }
     }
 
-    public void checkVis() //FIXME
+    public void checkVis()
     {
         Vector3 rayDest = transform.position;
         rayDest = Camera.main.WorldToScreenPoint(rayDest);

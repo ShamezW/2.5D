@@ -21,6 +21,8 @@ public class GestureManager : Singleton<GestureManager>
 
     public static Vector2 orgLoc;
 
+    private bool dPadDown = false;
+
     void Start()
     {
         swipeDistanceX = Screen.width * swipeDistanceX;
@@ -28,6 +30,12 @@ public class GestureManager : Singleton<GestureManager>
     }
 
     void Update()
+    {
+        Gestures();
+        GamePad();
+    }
+
+    void Gestures()
     {
         foreach (Touch i in Input.touches)
         {
@@ -68,6 +76,45 @@ public class GestureManager : Singleton<GestureManager>
                             onGesture(GestureState.SwipeUp);
                     }
                 }
+            }
+        }
+    }
+
+    void GamePad()
+    {
+        if (Input.GetAxis("DPadHorz") == 0 && Input.GetAxis("DPadVert") == 0)
+            dPadDown = false;
+
+        if (dPadDown == false)
+        {
+            if (Input.GetAxis("DPadHorz") == -1)
+            {
+                dPadDown = true;
+                if (onGesture != null)
+                    onGesture(GestureState.SwipeLeft);
+            }
+            else if (Input.GetAxis("DPadHorz") == 1)
+            {
+                dPadDown = true;
+                if (onGesture != null)
+                    onGesture(GestureState.SwipeRight);
+            }
+            else if (Input.GetAxis("DPadVert") == 1)
+            {
+                dPadDown = true;
+                if (onGesture != null)
+                    onGesture(GestureState.SwipeUp);
+            }
+            else if (Input.GetAxis("DPadVert") == -1)
+            {
+                dPadDown = true;
+                if (onGesture != null)
+                    onGesture(GestureState.SwipeDown);
+            }
+            else if (Input.GetKeyDown(KeyCode.Joystick1Button0))
+            {
+                if (onGesture != null)
+                    onGesture(GestureState.DoubleTap);
             }
         }
     }
