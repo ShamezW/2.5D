@@ -16,6 +16,9 @@ MonoBehaviour:
   - blockType: 2
     Location: {x: 1, y: 3, z: 3}
     Prefab: {fileID: 0}
-  - blockType: 0
+  - blockType: 2
     Location: {x: 2, y: 3, z: 3}
+    Prefab: {fileID: 0}
+  - blockType: 0
+    Location: {x: 3, y: 3, z: 3}
     Prefab: {fileID: 0}
