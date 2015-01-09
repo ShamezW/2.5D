@@ -949,7 +949,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 863ff5f565800fa4eb188631ed7cf2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraAnimator: {fileID: 0}
   baseCube: {fileID: 744289451}
   PlayerBlock: {fileID: 100000, guid: b86da8d050e134646930fab79a8f2882, type: 2}
   BasicBlock: {fileID: 100000, guid: aba82f5c0b2f23c4399d6a81fd5a352f, type: 2}
@@ -1758,7 +1757,6 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Priority: 3
   ignoreReversedGraphics: 1
   blockingObjects: 0
   m_BlockingMask:
@@ -2499,7 +2497,8 @@ MonoBehaviour:
   target: {x: 0, y: 0, z: -2}
   perspFov: 90
   orthoFov: 1
-  TweenSpeed: .600000024
+  TweenSpeed: .400000006
+  ShakeRange: {x: 1, y: 1, z: 0}
 --- !u!1 &2102951079
 GameObject:
   m_ObjectHideFlags: 0

@@ -64,6 +64,7 @@ public class Player : MonoBehaviour {
         {
             GameManager.SetOrthoMode(false);
             Camera.main.GetComponent<DollyZoom>().StartShakeTween();
+            Debug.Log("Area Blocked!");
         }
     }
 

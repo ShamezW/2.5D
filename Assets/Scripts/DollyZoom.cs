@@ -13,7 +13,7 @@ public class DollyZoom : MonoBehaviour
     public float TweenSpeed = 0.5f;
 
     //ShakeVars
-    public Vector3 ShakeRange = Vector3.one;
+    public Vector3 ShakeRange = new Vector3(0.1f, 0.1f, 0f);
 
     public delegate void DollyZoomEvents();
     public static event DollyZoomEvents onOrtho;
@@ -80,11 +80,14 @@ public class DollyZoom : MonoBehaviour
     IEnumerator ShakeTween()
     {
         float ShakeSpeed = 50f;
+        Vector3 orgPos = transform.position;
         while(ShakeSpeed > 0)
         {
-            Camera.main.transform.position = Vector3.Scale(SmoothRandom.GetVector3(ShakeSpeed), Vector3.one);
+            transform.position = Vector3.Scale(SmoothRandom.GetVector3(ShakeSpeed), ShakeRange);
             transform.position = transform.position + Vector3.Scale(SmoothRandom.GetVector3(ShakeSpeed--), ShakeRange);
             yield return null;
         }
+        transform.position = orgPos;
+        camera.fieldOfView = 90;
     }
 }
