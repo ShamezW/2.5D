@@ -621,7 +621,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: fdf4edf6de1072d44b8f3b3f34aef441, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: fdf4edf6de1072d44b8f3b3f34aef441, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2400,6 +2400,7 @@ GameObject:
   - 4: {fileID: 1989240988}
   - 20: {fileID: 1989240987}
   - 81: {fileID: 1989240984}
+  - 114: {fileID: 1989240986}
   - 114: {fileID: 1989240989}
   - 114: {fileID: 1989240985}
   m_Layer: 0
@@ -2439,6 +2440,18 @@ MonoBehaviour:
   separableBlurShader: {fileID: 4800000, guid: e97c14fbb5ea04c3a902cc533d7fc5d1, type: 3}
   chromAberrationShader: {fileID: 4800000, guid: 2b4f29398d9484ccfa9fd220449f5eee,
     type: 3}
+--- !u!114 &1989240986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1989240983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b29f222d28c51054bac34ab13d937100, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shaking: 0
 --- !u!20 &1989240987
 Camera:
   m_ObjectHideFlags: 0
@@ -2498,7 +2511,6 @@ MonoBehaviour:
   perspFov: 90
   orthoFov: 1
   TweenSpeed: .400000006
-  ShakeRange: {x: 1, y: 1, z: 0}
 --- !u!1 &2102951079
 GameObject:
   m_ObjectHideFlags: 0

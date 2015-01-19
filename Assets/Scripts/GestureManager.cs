@@ -37,22 +37,22 @@ public class GestureManager : Singleton<GestureManager>
 
     void Gestures()
     {
-        foreach (Touch i in Input.touches)
+        if (Input.touchCount > 0)
         {
-            if (i.phase == TouchPhase.Ended && i.tapCount == 2)
+            if (Input.GetTouch(0).phase == TouchPhase.Ended && Input.GetTouch(0).tapCount == 2)
             {
                 if (onGesture != null)
                     onGesture(GestureState.DoubleTap);
             }
 
-            if (i.phase == TouchPhase.Began)
-                orgLoc = i.position;
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
+                orgLoc = Input.GetTouch(0).position;
 
-            else if (i.phase == TouchPhase.Ended)
+            else if (Input.GetTouch(0).phase == TouchPhase.Ended)
             {
-                if (Mathf.Abs(i.position.x - orgLoc.x) > swipeDistanceX)
+                if (Mathf.Abs(Input.GetTouch(0).position.x - orgLoc.x) > swipeDistanceX)
                 {
-                    if (i.position.x - orgLoc.x < 0)
+                    if (Input.GetTouch(0).position.x - orgLoc.x < 0)
                     {
                         if (onGesture != null)
                             onGesture(GestureState.SwipeLeft);
@@ -63,9 +63,9 @@ public class GestureManager : Singleton<GestureManager>
                             onGesture(GestureState.SwipeRight);
                     }
                 }
-                else if (Mathf.Abs(i.position.y - orgLoc.y) > swipeDistanceY)
+                else if (Mathf.Abs(Input.GetTouch(0).position.y - orgLoc.y) > swipeDistanceY)
                 {
-                    if (i.position.y - orgLoc.y < 0)
+                    if (Input.GetTouch(0).position.y - orgLoc.y < 0)
                     {
                         if (onGesture != null)
                             onGesture(GestureState.SwipeDown);

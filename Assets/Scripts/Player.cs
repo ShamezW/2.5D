@@ -63,8 +63,7 @@ public class Player : MonoBehaviour {
         if (Physics.Raycast(ray, out hit) && !hit.transform.CompareTag("Player"))
         {
             GameManager.SetOrthoMode(false);
-            Camera.main.GetComponent<DollyZoom>().StartShakeTween();
-            Debug.Log("Area Blocked!");
+            //Camera.main.GetComponent<ScreenShake>().Play();
         }
     }
 
